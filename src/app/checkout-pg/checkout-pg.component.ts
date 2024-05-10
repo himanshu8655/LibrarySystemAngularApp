@@ -13,14 +13,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CheckoutPgComponent implements OnInit{
   bookId:string=''
-constructor(private http:HttpClient,private cookie:CookieService,private route: ActivatedRoute,private router: Router){}
+constructor(private http:HttpClient,private route: ActivatedRoute,private router: Router){}
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const bookid = params['bookid'];
       this.bookId=bookid
       if (!bookid) {
 
-        this.router.navigate(['/home']);
+        this.router.navigate([environment.HOME_PG]);
       }
     });
     }

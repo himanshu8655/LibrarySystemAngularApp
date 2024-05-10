@@ -32,7 +32,7 @@ export class RegisterComponent {
    this.http.post<ResMsg>(environment.base_url+'register',this.user).subscribe((data)=>{
     if(data.message==="Registered Successfully"){
       alert(data.message)
-      this.router.navigate(['/login'])
+      this.router.navigate([environment.LOGIN_PG])
     }
 
   },(err)=>alert("Registeration failed"))

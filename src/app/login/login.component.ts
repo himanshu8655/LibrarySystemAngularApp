@@ -28,7 +28,7 @@ constructor(private router: Router,private http:HttpClient,private cookieService
 login(){
   this.http.post<UserModel>(environment.base_url+'login',this.login_model).subscribe(data=>{
     this.cookieService.set('uid', data.UID ? data.UID : '');
-    this.router.navigate(['/home'])
+    this.router.navigate([environment.HOME_PG])
   },err=>{
     alert("Invalid Email ID/Password")
   })
