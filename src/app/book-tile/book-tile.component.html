@@ -1,0 +1,12 @@
+
+
+<div class="book-tile">
+    <img src="../../assets/books/book_1.jpg" alt="Book Cover" class="book-cover">
+    <div class="book-details">
+      <h2>{{ book?.book_name }}</h2>
+      <p>Author: {{ book?.author }}</p>
+      <p>Description: {{ book?.about_book }}</p>
+      <p>Amount: ${{ book?.price }}</p>
+      <button (click)="checkOut(book?.['book_id'])">Add to Cart</button>
+    </div>
+  </div>

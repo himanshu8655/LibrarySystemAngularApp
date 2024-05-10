@@ -1,0 +1,26 @@
+.book-tile {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.book-cover {
+  width: 100px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.book-details {
+  flex: 1;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+p {
+  margin: 5px 0;
+}

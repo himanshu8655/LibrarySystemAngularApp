@@ -1,0 +1,29 @@
+
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="login">
+                <div class="login__field">
+                    <input [(ngModel)]="login_model.email_id" class="login__input" placeholder="Email"/>
+                </div>
+                <div class="login__field">
+                    <input [(ngModel)]="login_model.password"   class="login__input" type="password"  placeholder="Password"/>
+                </div>
+                <button class="btn btn-primary btn-block login__submit" (click)="login()">
+                    <span class="button__text">Log In Now</span>
+                </button>   
+                <div class="register_btn">
+                    <a routerLink="/register" class="register_btn" >New here? Register Here</a>
+
+                </div>
+             
+            </div>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>     
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>  
+    </div>
+</div>

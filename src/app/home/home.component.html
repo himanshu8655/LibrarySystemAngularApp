@@ -1,0 +1,21 @@
+<div class="row pt-4">
+    <div class="col"></div>
+    <div class="col-auto">
+        <h1 class="text-center">Our Collection</h1>
+    </div>
+    <div class="col-auto">
+<button type="button" (click)="addBook()" class="btn btn-primary btn-block">ADD BOOK</button>
+<button class="submit-button" (click)="logout()">Logout</button>
+    </div>
+    <div class="col"></div>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div  *ngFor="let book of books_data">
+                <app-book-tile  [book]="book"></app-book-tile>
+              </div>
+        </div>
+    </div>
+</div>
