@@ -1,42 +1,42 @@
 <!-- add-edit-book.component.html -->
 <div class="Auth-form-container">
-    <div class="Auth-form">
+  <div class="Auth-form">
       <div class="Auth-form-content">
-        <h3 class="Auth-form-title">Add Book</h3>
-        <div class="textField-label">
-          <label for="bookName">Book Title</label><br />
-          <input [(ngModel)]="book.book_name" type="text" id="bookName" class="textField-input" placeholder="Enter Book Title" />
-        </div>
-        <div class="textField-label">
-          <label for="bookAuthor">Book Author</label><br />
-          <input [(ngModel)]="book.author" type="text" id="bookAuthor" class="textField-input" placeholder="Enter Author Name" />
-        </div>
-        <div class="textField-label">
-          <label for="description">Description</label><br />
-          <textarea [(ngModel)]="book.about_book" id="description" class="textField-input" placeholder="Enter Description..."></textarea>
-        </div>
-        <div class="textField-label">
-          <label for="bookPrice">Price ($)</label><br />
-          <input [(ngModel)]="book.price" type="number" id="bookPrice" class="textField-input" placeholder="Enter Price" />
-        </div>
-  
-        <!-- <div class="flex-container">
-          <span class="display-file"></span>
-          <button>Remove</button>
-        </div>
-        <div class='drop-area-normal' (click)="uploadFile()">
-          <p>Upload File</p>
-        </div> -->
-        <div class="flex-container">        <input type="file" id="upload-element"  class="file-upload" (change)="onFileSelected($event)" #hidden/>
-          <input #fileInput type="file" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx" />
+          <h3 class="Auth-form-title">Add Book</h3>
+          <!-- Input field for Book Title -->
+          <div class="textField-label">
+              <label for="bookName">Book Title</label><br />
+              <input [(ngModel)]="book.book_name" type="text" id="bookName" class="textField-input" placeholder="Enter Book Title" required />
+              <div *ngIf="!book.book_name && book.book_name !== null && book.book_name!=''" class="error-message">Book Title is required</div>
+          </div>
+          <!-- Input field for Book Author -->
+          <div class="textField-label">
+              <label for="bookAuthor">Book Author</label><br />
+              <input [(ngModel)]="book.author" type="text" id="bookAuthor" class="textField-input" placeholder="Enter Author Name" required />
+              <div *ngIf="!book.author && book.author !== null && book.author !==''" class="error-message">Author Name is required</div>
+          </div>
+          <!-- Textarea for Book Description -->
+          <div class="textField-label">
+              <label for="description">Description</label><br />
+              <textarea [(ngModel)]="book.about_book" id="description" class="textField-input" placeholder="Enter Description..." required></textarea>
+              <div *ngIf="!book.about_book && book.about_book !== null && book.about_book!=''" class="error-message">Description is required</div>
+          </div>
+          <!-- Input field for Book Price -->
+          <div class="textField-label">
+              <label for="bookPrice">Price ($)</label><br />
+              <input [(ngModel)]="book.price" type="number" id="bookPrice" class="textField-input" placeholder="Enter Price" required />
+              <div *ngIf="!book.price && book.price !== null && book.price!=''" class="error-message">Price is required</div>
+          </div>
 
-        </div>
-  
-        <div class="Auth-form-title">
-          <button class="submit-button" (click)="addBook()">Submit</button>
+          <!-- File upload section -->
+          <div class="flex-container">
+              <input type="file" id="upload-element" class="file-upload" (change)="onFileSelected($event)" #hidden required />
+              <input #fileInput type="file" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx" required />
+          </div>
 
-        </div>
+          <div class="Auth-form-title">
+              <button class="submit-button" (click)="addBook()">Submit</button>
+          </div>
       </div>
-    </div>
   </div>
-  
+</div>

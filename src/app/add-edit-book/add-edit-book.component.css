@@ -12,7 +12,10 @@
 .App {
   background-color: white;
 }
-
+.error-message {
+  color: red;
+  font-size: 12px;
+}
 .Auth-form-container {
   display: flex;
   justify-content: center;

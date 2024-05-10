@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit{
     getBooks() {
       this.http.get<BookModel[]>(environment.base_url+'books').subscribe(data=>{
         this.books_data=data
+        console.log(data)
       })
     }
 }

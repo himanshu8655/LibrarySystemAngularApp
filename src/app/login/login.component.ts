@@ -7,12 +7,13 @@ import { environment } from '../../../environment';
 import { ResMsg } from '../models/res-msg';
 import { CookieService } from 'ngx-cookie-service';
 import { UserModel } from '../models/user-model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule,FormsModule,HttpClientModule],
+  imports: [RouterModule,FormsModule,HttpClientModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

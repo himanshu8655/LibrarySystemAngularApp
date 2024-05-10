@@ -5,11 +5,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environment';
 import { FormsModule } from '@angular/forms';
 import { ResMsg } from '../models/res-msg';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-book',
   standalone: true,
-  imports: [HttpClientModule,FormsModule],
+  imports: [HttpClientModule,FormsModule,CommonModule],
   templateUrl: './add-edit-book.component.html',
   styleUrl: './add-edit-book.component.css'
 })

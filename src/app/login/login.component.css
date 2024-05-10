@@ -15,6 +15,10 @@ body {
     min-height: 100vh;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+  }
 .screen {        
     background: linear-gradient(90deg, #5D54A4, #7C78B8);        
     position: relative;    
@@ -119,7 +123,10 @@ body {
     cursor: pointer;
     transition: .2s;
 }
-
+.login__submit:disabled {
+    opacity: 0.5; /* Reduce opacity when button is disabled */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+}
 .login__submit:active,
 .login__submit:focus,
 .login__submit:hover {
