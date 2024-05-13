@@ -45,7 +45,6 @@ this.http.post<ResMsg>(environment.base_url+"book",formData).subscribe(data=>{
   alert(data.message)
   this.resetForm()
 },err=>{
-  console.log(err)
   alert("Error adding book")
 
 })
