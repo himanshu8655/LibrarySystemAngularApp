@@ -15,8 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
   
       return next.handle(modifiedRequest).pipe(
         tap((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse) {
-
+          if (event instanceof HttpResponse && event.url?.endsWith('login')) {
             let uid = event.body.get('uid')
             if(uid){
                 this.cookieService.set('uid',uid)
