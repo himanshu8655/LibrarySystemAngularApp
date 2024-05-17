@@ -18,10 +18,10 @@ export class BookServiceService {
         formData.append(key,book[key]);
       }
     }
-    return this.http.post(environment.base_url+'book',formData).subscribe();
+    return this.http.post(environment.base_url+'/book',formData).subscribe();
   }
   getBooks(){
-    return this.http.get(environment.base_url+'books').subscribe()
+    return this.http.get(environment.base_url+'/books').subscribe()
   }
   editBook(book:BookModel){
     const formData = new FormData();
@@ -30,17 +30,17 @@ export class BookServiceService {
         formData.append(key,book[key]);
       }
     }
-    return this.http.put(environment.base_url+'book',book).subscribe();
+    return this.http.put(environment.base_url+'/book',book).subscribe();
   }
   updateProfile(user:UserModel){
-    return this.http.put(environment.base_url+'profile',user).subscribe()
+    return this.http.put(environment.base_url+'/profile',user).subscribe()
   }
 
   getUserData(id:string){
-    return this.http.get(`${environment.base_url}profile/${id}`).subscribe()
+    return this.http.get(`${environment.base_url}/profile/${id}`).subscribe()
   }
   getBookById(id:string){
-    return this.http.get(`${environment.base_url}book/${id}`).subscribe()
+    return this.http.get(`${environment.base_url}/book/${id}`).subscribe()
 
   }
 }

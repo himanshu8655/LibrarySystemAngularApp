@@ -41,7 +41,7 @@ addBook(){
       }
     }
     formData.append('ebook', this.selectedFile?this.selectedFile:'')
-this.http.post<ResMsg>(environment.base_url+"book",formData).subscribe(data=>{
+this.http.post<ResMsg>(environment.base_url+"/book",formData).subscribe(data=>{
   alert(data.message)
   this.resetForm()
 },err=>{

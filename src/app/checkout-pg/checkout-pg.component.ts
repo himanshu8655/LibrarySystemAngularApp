@@ -31,7 +31,7 @@ constructor(private http:HttpClient,private route: ActivatedRoute,private router
 
 purchase(event:Event){
   event.preventDefault();
-this.http.get(environment.base_url+'book/downlaod/'+this.bookId).subscribe(data=>{
+this.http.get(environment.base_url+'/book/downlaod/'+this.bookId).subscribe(data=>{
   alert('Book downloaded successfully')
 },err=>{
   alert("error processing request")
@@ -40,7 +40,7 @@ this.http.get(environment.base_url+'book/downlaod/'+this.bookId).subscribe(data=
 }
 
 getBookDetails(bookId:string){
-  this.http.get<BookModel>(`${environment.base_url}book/${bookId}`).subscribe(data=>{
+  this.http.get<BookModel>(`${environment.base_url}/book/${bookId}`).subscribe(data=>{
     this.bookPrice=data.price==null?'0':data.price
   },err=>{})
 }

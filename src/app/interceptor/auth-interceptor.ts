@@ -10,16 +10,21 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private cookieService: CookieService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = this.cookieService.get('token').trim();
     const modifiedRequest = request.clone({
+      setHeaders: token?{
+        Authorization: token
+      }:{},
+      
       });
   
       return next.handle(modifiedRequest).pipe(
         tap((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse && event.url?.endsWith('login')) {
-            let uid = event.body.get('uid')
-            if(uid){
-                this.cookieService.set('uid',uid)
-            }
+            let token = event.body.token
+            if(token)
+            this.cookieService.set('token',`Bearer ${token}`)
+            
           }
         }, (error: any) => {
           if (error instanceof HttpErrorResponse) {

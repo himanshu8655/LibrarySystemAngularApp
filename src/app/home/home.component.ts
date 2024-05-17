@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { BookTileComponent } from '../book-tile/book-tile.component';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environment';
 import { BookModel } from '../models/book-model';
 import { CommonModule } from '@angular/common';
@@ -17,11 +17,12 @@ export class HomeComponent implements OnInit{
   
   books_data:BookModel[]=[]
   constructor(private http:HttpClient,private cookieService: CookieService,private router:Router){
-    this.getBooks();
     }
     ngOnInit(): void {
-      if(this.cookieService.get('uid') == null)
-        this.router.navigate([environment.LOGIN_PG])
+      const token = this.cookieService.get('token')
+      if (!token) this.router.navigate([environment.LOGIN_PG]);
+      this.getBooks();
+
     }
   checkOut(){
     
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit{
       this.router.navigate([environment.PROFILE_PG])
     }
     getBooks() {
-      this.http.get<BookModel[]>(environment.base_url+'books').subscribe(data=>{
+      this.http.get<BookModel[]>(environment.base_url+'/books').subscribe(data=>{
         this.books_data=data
       })
     }

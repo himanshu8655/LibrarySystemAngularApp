@@ -29,7 +29,7 @@ export class RegisterComponent {
     if(!this.validated) {
       return
     }
-   this.http.post<ResMsg>(environment.base_url+'register',this.user).subscribe((data)=>{
+   this.http.post<ResMsg>(environment.base_url+'/auth/register',this.user).subscribe((data)=>{
     if(data.message==="Registered Successfully"){
       alert(data.message)
       this.router.navigate([environment.LOGIN_PG])

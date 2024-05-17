@@ -23,14 +23,14 @@ export class ProfileComponent implements OnInit{
 ngOnInit(): void {
   this.user.UID = this.cookieService.get('uid');
   
-  this.http.get<UserModel>(environment.base_url+'profile/'+this.user.UID).subscribe(data=>{
+  this.http.get<UserModel>(environment.base_url+'/profile/'+this.user.UID).subscribe(data=>{
     this.user=data
     this.user.password='************'
   })
 }
 
 updateProfile(){
-  this.http.put<ResMsg>(environment.base_url+'profile',this.user).subscribe(data=>{
+  this.http.put<ResMsg>(environment.base_url+'/profile',this.user).subscribe(data=>{
       alert(data.message)
       this.router.navigate([environment.HOME_PG])
   })
