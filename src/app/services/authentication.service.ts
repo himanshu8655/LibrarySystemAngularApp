@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../models/login-model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { environment } from '../../../environment';
 import { UserModel } from '../models/user-model';
-import { Observable, timer } from 'rxjs';
+import { Observable, map, timer, catchError, of } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -13,10 +13,20 @@ export class AuthenticationService {
   private tokenKey:string = 'token';
   private tokenExpiration:number = 600000;
   private tokenExpirationTimer: any;
+  private isAuthenticated:boolean = false;
   constructor(private http:HttpClient, private cookieService: CookieService) { }
 
-  login(login_model:LoginModel): Observable<any>{
-    return this.http.post(environment.base_url+"/auth/login",login_model); 
+  login(login_model:LoginModel):Observable<boolean>{
+    return this.http.post(environment.base_url + '/auth/login', login_model).pipe(
+      map(data => {
+        this.isAuthenticated = true;
+        return true;
+      }),
+      catchError(err => {
+        this.isAuthenticated = false;
+        return of(false);
+      })
+    );
   }
 
     register(user:UserModel): Observable<any>{
@@ -53,5 +63,14 @@ export class AuthenticationService {
       if (this.tokenExpirationTimer) {
         this.tokenExpirationTimer.unsubscribe();
       }
+    }
+
+  
+    logout(): void {
+      this.isAuthenticated = false;
+    }
+  
+    isLoggedIn(): boolean {
+      return this.isAuthenticated;
     }
 }
