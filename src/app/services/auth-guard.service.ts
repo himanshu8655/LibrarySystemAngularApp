@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthGuardService {
       console.log(this.authService.isLoggedIn())
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate([environment.LOGIN_PG]);
       return false;
     }
   }
