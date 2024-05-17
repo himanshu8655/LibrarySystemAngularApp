@@ -19,8 +19,7 @@ export class HomeComponent implements OnInit{
   constructor(private http:HttpClient,private cookieService: CookieService,private router:Router){
     }
     ngOnInit(): void {
-      const token = this.cookieService.get('token')
-      if (!token) this.router.navigate([environment.LOGIN_PG]);
+
       this.getBooks();
 
     }

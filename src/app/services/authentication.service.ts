@@ -73,4 +73,7 @@ export class AuthenticationService {
     isLoggedIn(): boolean {
       return this.isAuthenticated;
     }
+    setLogIn(status:boolean){
+      this.isAuthenticated=status;
+    }
 }

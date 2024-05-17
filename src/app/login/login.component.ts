@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [RouterModule,FormsModule,CommonModule,HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  providers:  [ AuthenticationService ]
+ 
 })
 export class LoginComponent implements OnInit{
 login_model:LoginModel = new LoginModel()
@@ -27,7 +27,10 @@ constructor(private router: Router, private authService:AuthenticationService,pr
 }
   ngOnInit(): void {
     const token = this.cookieService.get('token')
-   if (token) this.router.navigate([environment.HOME_PG])
+   if (token) {
+    this.authService.setLogIn(true)
+    this.router.navigate([environment.HOME_PG])
+  }
   }
 
 login(){
@@ -36,7 +39,6 @@ login(){
       alert("Invalid Email ID/Password")
     }
       else{
-        console.log("log",this.authService.isLoggedIn())
         this.router.navigate([environment.HOME_PG])      
       }
   })
