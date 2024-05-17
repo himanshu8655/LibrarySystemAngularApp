@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
   
       return next.handle(modifiedRequest).pipe(
         tap((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse && event.url?.endsWith('login')) {
+          if (event instanceof HttpResponse && (event.url?.endsWith('login') || event.url?.endsWith('revokeSession'))) {
             let token = event.body.token
             if(token)
             this.cookieService.set('token',`Bearer ${token}`)
