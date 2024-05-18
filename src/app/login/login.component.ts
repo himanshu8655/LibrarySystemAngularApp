@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserModel } from '../models/user-model';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit{
 login_model:LoginModel = new LoginModel()
-constructor(private router: Router, private authService:AuthenticationService,private cookieService: CookieService) { 
+constructor(private router: Router,private http:HttpClient,private authService:AuthenticationService,private cookieService: CookieService) { 
   this.login_model.email_id='test@gmail.com'
   this.login_model.password = '123456'
 }
@@ -34,13 +34,13 @@ constructor(private router: Router, private authService:AuthenticationService,pr
   }
 
 login(){
-  this.authService.login(this.login_model).subscribe(isLoggedIn=>{
-    if(!isLoggedIn) {
+  this.http.post(environment.base_url + '/auth/login', this.login_model).subscribe(data=>{
+    if(data instanceof HttpErrorResponse){
       alert("Invalid Email ID/Password")
     }
-      else{
-        this.router.navigate([environment.HOME_PG])      
-      }
+    this.authService.setLogIn(true)
+    this.router.navigate([environment.HOME_PG]) 
   })
+
 }
 }
