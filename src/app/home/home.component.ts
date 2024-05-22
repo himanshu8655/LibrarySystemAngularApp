@@ -38,8 +38,9 @@ export class HomeComponent implements OnInit{
       this.router.navigate([environment.PROFILE_PG])
     }
     getBooks() {
-      this.http.get<BookModel[]>(environment.base_url+'/books').subscribe(data=>{
+      this.http.get<BookModel[]>(environment.base_url+'/book').subscribe(data=>{
         this.books_data=data
+        console.log(this.books_data)
       })
     }
 }

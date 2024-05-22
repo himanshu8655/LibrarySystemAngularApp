@@ -35,12 +35,17 @@ constructor(private router: Router,private http:HttpClient,private authService:A
 
 login(){
   this.http.post(environment.base_url + '/auth/login', this.login_model).subscribe(data=>{
-    if(data instanceof HttpErrorResponse){
-      alert("Invalid Email ID/Password")
-    }
+
     this.authService.setLogIn(true)
     this.router.navigate([environment.HOME_PG]) 
-  })
+  },err=>{
+    if(err instanceof HttpErrorResponse && err.status == 401) 
+      alert("Invalid Email ID/Password")
+    else
+      alert("Error Processing Request!")
+
+  }
+)
 
 }
 }

@@ -1,23 +1,19 @@
 <div class="row pt-4">
     <div class="col"></div>
-    <div class="col-auto">
-        <h1 class="text-center">Our Collection</h1>
+    <div class="col-auto text-center">
+        <h1>Our Collection</h1>
     </div>
     <div class="col-auto">
-<button type="button" (click)="addBook()" class="btn btn-primary btn-block">ADD BOOK</button>
-<button class="submit-button" (click)="logout()">Logout</button>
-<button (click)="profile()">Update Profile</button>
+        <button type="button" (click)="addBook()" class="btn btn-primary">ADD BOOK</button>
+        <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
+        <button type="button" class="btn btn-info" (click)="profile()">Update Profile</button>
     </div>
-    
     <div class="col"></div>
-
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <div  *ngFor="let book of books_data">
-                <app-book-tile  [book]="book"></app-book-tile>
-              </div>
+        <div class="col-md-3 mb-4" *ngFor="let book of books_data">
+            <app-book-tile [book]="book"></app-book-tile>
         </div>
     </div>
 </div>
