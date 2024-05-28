@@ -7,14 +7,24 @@ import { environment } from '../../../environment';
 import { BookModel } from '../models/book-model';
 import { CommonModule } from '@angular/common';
 import { BookPaginationDTO } from '../models/book-pagination-dto';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BookTileComponent,HttpClientModule,CommonModule,RouterOutlet],
+  imports: [BookTileComponent,HttpClientModule,CommonModule,RouterOutlet, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
+currentPageIndex:number = 0
+pageSize:number = 4
+sortDirection:string = 'asc'
+
+onPageChange($event: PageEvent) {
+  this.currentPageIndex=$event.pageIndex
+  this.getBooks()
+}
   
   books_data:BookPaginationDTO=new BookPaginationDTO()
   constructor(private http:HttpClient,private cookieService: CookieService,private router:Router){
@@ -39,7 +49,7 @@ export class HomeComponent implements OnInit{
       this.router.navigate([environment.PROFILE_PG])
     }
     getBooks() {
-      this.http.get<BookPaginationDTO>(environment.base_url+'/book').subscribe(data=>{
+      this.http.get<BookPaginationDTO>(environment.base_url+`/book?page=${this.currentPageIndex}&size=${this.pageSize}&sortBy=book_name&sortDirection=${this.sortDirection}`).subscribe(data=>{
         this.books_data=data
         console.log(this.books_data)
       })

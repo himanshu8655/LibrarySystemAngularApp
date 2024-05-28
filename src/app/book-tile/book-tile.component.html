@@ -3,20 +3,19 @@
     <div class="flipper">
       <div class="front">
         <img src="{{ book?.thumbnail_url }}" loading="lazy" alt="Book Cover" class="book-cover">
-        <h2>{{ book?.book_name }}</h2>
+        <div class="front-details">
+          <h2>{{ book?.book_name }}</h2>
+        </div>
       </div>
       <div class="back">
         <div class="book-details">
-          <div>
+          <div class="book-info">
             <h2>{{ book?.book_name }}</h2>
-            <p class="author">Author: {{ book?.author }}</p>
+            <p class="author">Author: ~ {{ book?.author }}</p>
             <p class="description">{{ book?.about_book }}</p>
             <p class="price">Amount: ${{ book?.price }}</p>
           </div>
-          <div>
-            <button class="btn btn-primary" (click)="checkOut(book?.book_id!)">Add to Cart</button>
-
-          </div>
+          <button class="btn btn-primary" (click)="checkOut(book?.book_id!)">Add to Cart</button>
         </div>
       </div>
     </div>

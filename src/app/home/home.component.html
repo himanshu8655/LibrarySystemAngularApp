@@ -2,8 +2,14 @@
     <div class="col"></div>
     <div class="col-auto text-center">
         <h1>Our Collection</h1>
+        <mat-paginator [length]="books_data.totalElements"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="onPageChange($event)">
+        </mat-paginator>
     </div>
-    <div class="col-auto">
+    <div class="col-auto text-center">
         <button type="button" (click)="addBook()" class="btn btn-primary">ADD BOOK</button>
         <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
         <button type="button" class="btn btn-info" (click)="profile()">Update Profile</button>
@@ -12,7 +18,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 mb-4" *ngFor="let book of books_data.content">
+        <div class="col-md-3 col-sm-6 mb-4" *ngFor="let book of books_data.content">
             <app-book-tile [book]="book"></app-book-tile>
         </div>
     </div>
