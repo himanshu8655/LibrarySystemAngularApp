@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { environment } from '../../../environment';
 import { BookModel } from '../models/book-model';
 import { CommonModule } from '@angular/common';
+import { BookPaginationDTO } from '../models/book-pagination-dto';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit{
   
-  books_data:BookModel[]=[]
+  books_data:BookPaginationDTO=new BookPaginationDTO()
   constructor(private http:HttpClient,private cookieService: CookieService,private router:Router){
     }
     ngOnInit(): void {
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit{
       this.router.navigate([environment.PROFILE_PG])
     }
     getBooks() {
-      this.http.get<BookModel[]>(environment.base_url+'/book').subscribe(data=>{
+      this.http.get<BookPaginationDTO>(environment.base_url+'/book').subscribe(data=>{
         this.books_data=data
         console.log(this.books_data)
       })

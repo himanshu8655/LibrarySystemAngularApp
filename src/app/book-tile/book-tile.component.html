@@ -1,16 +1,24 @@
-<div class="book-tile">
-  <img src="{{ book?.['thumbnail_url'] }}" loading="lazy" alt="Book Cover" class="book-cover">
-  <div class="book-details">
-    <h2>{{ book?.book_name }}</h2>
-    <p class="author">Author: {{ book?.author }}</p>
-    <p class="description">
-      <span *ngIf="!isExpanded">{{ book?.about_book | slice:0:100 }}...</span>
-      <span *ngIf="isExpanded">{{ book?.about_book }}</span>
-    </p>
-    <button *ngIf="book?.about_book!.length > 100" (click)="toggleReadMore()">
-      {{ isExpanded ? 'Show Less' : 'Read More' }}
-    </button>
-    <p class="price">Amount: ${{ book?.price }}</p>
-    <button class="btn btn-primary" (click)="checkOut(book?.book_id!)">Add to Cart</button>
+<div class="book-tile" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" [ngClass]="{ 'hovered': isHovered }">
+  <div class="flip-container" [ngClass]="{ 'hovered': isHovered }">
+    <div class="flipper">
+      <div class="front">
+        <img src="{{ book?.thumbnail_url }}" loading="lazy" alt="Book Cover" class="book-cover">
+        <h2>{{ book?.book_name }}</h2>
+      </div>
+      <div class="back">
+        <div class="book-details">
+          <div>
+            <h2>{{ book?.book_name }}</h2>
+            <p class="author">Author: {{ book?.author }}</p>
+            <p class="description">{{ book?.about_book }}</p>
+            <p class="price">Amount: ${{ book?.price }}</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" (click)="checkOut(book?.book_id!)">Add to Cart</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

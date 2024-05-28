@@ -20,6 +20,20 @@ export class BookTileComponent {
 
 constructor(private router:Router){
 }
+
+isHovered = false;
+
+
+onMouseOver() {
+  this.isHovered = true;
+  console.log("mouse1")
+}
+
+onMouseOut() {
+  this.isHovered = false;
+  console.log("mouse2")
+}
+
 checkOut(id: string) {
   this.router.navigate([environment.CHECKOUT_PG], { queryParams: { bookid: id } });
 }
@@ -27,4 +41,5 @@ checkOut(id: string) {
 toggleReadMore() {
   this.isExpanded = !this.isExpanded;
 }
+
 }
