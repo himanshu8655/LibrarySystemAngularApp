@@ -13,7 +13,7 @@
   </div>
   <div class="parent">
     <div class="child">
-        <mat-paginator [length]="books_data.totalElements"
+        <mat-paginator #paginator [length]="books_data.totalElements"
         [pageSize]="pageSize"
         [pageSizeOptions]="[5, 10, 25, 100]"
         aria-label="Select page"
