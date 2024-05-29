@@ -18,7 +18,7 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit{
 currentPageIndex:number = 0
-pageSize:number = 4
+pageSize:number = 6
 sortDirection:string = 'asc'
 
 onPageChange($event: PageEvent) {

@@ -1,29 +1,10 @@
-.row {
-  margin-top: 20px;
-}
-
-.text-center {
+.parent {
+  margin: 1rem;
+  padding: 2rem 2rem;
   text-align: center;
 }
-
-.btn {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.container .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center the items horizontally */
-}
-
-.container .row .col-md-3 {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  margin-left: 10px; /* Add space between columns */
-  margin-right: 10px; 
-  flex: 1 1 21%; /* Adjust the basis and shrink factor to fit four items per row */
-  max-width: 240px; /* Ensure a max width for the columns */
-  box-sizing: border-box;
+.child {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
 }

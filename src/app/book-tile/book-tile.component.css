@@ -13,7 +13,12 @@
   transform-style: preserve-3d;
   margin: 10px; /* Add margin to create space between tiles */
 }
-
+.child {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
 .flip-container {
   position: relative;
   width: 100%;
