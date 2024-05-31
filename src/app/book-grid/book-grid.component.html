@@ -1,0 +1,15 @@
+<div class="book-tiles-container">
+    <div class="book-tile">
+      <div class="book-tile-content">
+        <img src="{{ book?.thumbnailUrl }}" loading="lazy" alt="Book Cover" class="book-cover">
+        <div class="book-details">
+          <h2>{{ book?.bookName }}</h2>
+          <p class="author">Author: {{ book?.author }}</p>
+          <p class="description">{{ book?.aboutBook }}</p>
+          <p class="price">Amount: ${{ book?.price }}</p>
+          <button class="btn btn-primary" (click)="checkOut(book?.bookId!)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

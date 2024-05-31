@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { BookTileComponent } from '../book-tile/book-tile.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -7,20 +7,32 @@ import { environment } from '../../../environment';
 import { CommonModule } from '@angular/common';
 import { BookPaginationDTO } from '../models/book-pagination-dto';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ThemePalette} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { BookGridComponent } from '../book-grid/book-grid.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BookTileComponent,HttpClientModule,CommonModule,RouterOutlet, MatPaginatorModule],
+  imports: [BookTileComponent, BookGridComponent,HttpClientModule,CommonModule,RouterOutlet, MatPaginatorModule, MatFormFieldModule, MatSelectModule, MatSlideToggleModule,MatIconModule, MatRadioModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
+onFilterChange($event: any) {
+  this.getBooks()
+
+}
 currentPageIndex:number = 0
 pageSize:number = 5
 sortDirection:string = 'asc'
-
+filter_by = 'bookId';
+view = 'gridView'
 onPageChange($event: PageEvent) {
   this.currentPageIndex=$event.pageIndex
   this.pageSize = $event.pageSize
@@ -50,7 +62,7 @@ onPageChange($event: PageEvent) {
       this.router.navigate([environment.PROFILE_PG])
     }
     getBooks() {
-      this.http.get<BookPaginationDTO>(environment.base_url+`/book?page=${this.currentPageIndex}&size=${this.pageSize}&sortBy=book_name&sortDirection=${this.sortDirection}`).subscribe(data=>{
+      this.http.get<BookPaginationDTO>(environment.base_url+`/book?page=${this.currentPageIndex}&size=${this.pageSize}&sortBy=${this.filter_by}&sortDirection=${this.sortDirection}`).subscribe(data=>{
         this.books_data=data
       })
     }

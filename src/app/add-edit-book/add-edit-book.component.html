@@ -6,8 +6,8 @@
           <!-- Input field for Book Title -->
           <div class="textField-label">
               <label for="bookName">Book Title</label><br />
-              <input [(ngModel)]="book.book_name" type="text" id="bookName" class="textField-input" placeholder="Enter Book Title" required />
-              <div *ngIf="!book.book_name && book.book_name !== null && book.book_name!=''" class="error-message">Book Title is required</div>
+              <input [(ngModel)]="book.bookName" type="text" id="bookName" class="textField-input" placeholder="Enter Book Title" required />
+              <div *ngIf="!book.bookName && book.bookName !== null && book.bookName!=''" class="error-message">Book Title is required</div>
           </div>
           <!-- Input field for Book Author -->
           <div class="textField-label">
@@ -18,8 +18,8 @@
           <!-- Textarea for Book Description -->
           <div class="textField-label">
               <label for="description">Description</label><br />
-              <textarea [(ngModel)]="book.about_book" id="description" class="textField-input" placeholder="Enter Description..." required></textarea>
-              <div *ngIf="!book.about_book && book.about_book !== null && book.about_book!=''" class="error-message">Description is required</div>
+              <textarea [(ngModel)]="book.aboutBook" id="description" class="textField-input" placeholder="Enter Description..." required></textarea>
+              <div *ngIf="!book.aboutBook && book.aboutBook !== null && book.aboutBook!=''" class="error-message">Description is required</div>
           </div>
           <!-- Input field for Book Price -->
           <div class="textField-label">

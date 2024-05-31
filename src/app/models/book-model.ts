@@ -1,10 +1,10 @@
 export class BookModel {
     [key: string]: any;
     price:string=''
-    about_book:string=''
+    aboutBook:string=''
     author:string=''
-    book_name:string = ''
-    thumbnail_url:string | null = null
-    file_url:string | null = null
-    book_id : string | null = null
+    bookName:string = ''
+    thumbnailUrl:string | null = null
+    fileUrl:string | null = null
+    bookId : string | null = null
 }

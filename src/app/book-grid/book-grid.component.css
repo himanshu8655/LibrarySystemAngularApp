@@ -1,0 +1,59 @@
+/* Container for the tiles */
+.book-tiles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual tile */
+.book-tile {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.book-tile-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Book cover */
+.book-cover {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Book details */
+.book-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-details h2 {
+  margin: 0;
+}
+
+.book-details p {
+  margin: 5px 0;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}

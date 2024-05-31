@@ -5,7 +5,29 @@
     <div class='parent'>
         <button type="button" (click)="addBook()" class="btn btn-primary">ADD BOOK</button>
         <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
-        <button type="button" class="btn btn-info" (click)="profile()">Update Profile</button>  </div>
+        <button type="button" class="btn btn-info" (click)="profile()">Update Profile</button>  
+        <mat-form-field style="margin: 20px;">
+          <mat-label>Filter:</mat-label>
+          <mat-select [(ngModel)]="filter_by"  (ngModelChange)="onFilterChange($event)">
+            <mat-option value="bookId">Recent</mat-option>
+            <mat-option value="price">Price</mat-option>
+            <mat-option value="bookName">Book Title</mat-option>
+            <mat-radio-group [(ngModel)]="sortDirection" aria-label="Select an option" color="primary"  (ngModelChange)="onFilterChange($event)">
+              <p style="padding-left: 10px; padding-top: 10px;">Sort By:</p>
+              <mat-radio-button value="asc">Ascending</mat-radio-button>
+              <mat-radio-button value="desc">Descending</mat-radio-button>
+            </mat-radio-group>
+          </mat-select>
+          <!-- <div class="child">
+            <mat-select [(ngModel)]="view"  (ngModelChange)="onFilterChange($event)">
+              <mat-option value="gridView">Grid View</mat-option>
+              <mat-option value="tileView">Tile View</mat-option>
+            </mat-select>
+          </div> -->
+        </mat-form-field>
+       
+            </div>
+            
   <div class='parent'>
     <div class="child" *ngFor="let book of books_data.content">
         <app-book-tile  [book]="book"></app-book-tile>
