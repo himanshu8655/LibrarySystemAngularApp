@@ -3,9 +3,16 @@
         <h1>Our Collection</h1>
     </div>
     <div class='parent'>
-        <button type="button" (click)="addBook()" class="btn btn-primary">ADD BOOK</button>
-        <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
-        <button type="button" class="btn btn-info" (click)="profile()">Update Profile</button>  
+        <div class="child">
+          <mat-form-field>
+            <mat-label>View:</mat-label>
+            <mat-select [(ngModel)]="view"  (ngModelChange)="onFilterChange($event)">
+              <mat-option value="gridView">Grid</mat-option>
+              <mat-option value="tileView">Tile</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+       
         <mat-form-field style="margin: 20px;">
           <mat-label>Filter:</mat-label>
           <mat-select [(ngModel)]="filter_by"  (ngModelChange)="onFilterChange($event)">
@@ -18,20 +25,18 @@
               <mat-radio-button value="desc">Descending</mat-radio-button>
             </mat-radio-group>
           </mat-select>
-          <!-- <div class="child">
-            <mat-select [(ngModel)]="view"  (ngModelChange)="onFilterChange($event)">
-              <mat-option value="gridView">Grid View</mat-option>
-              <mat-option value="tileView">Tile View</mat-option>
-            </mat-select>
-          </div> -->
+        
         </mat-form-field>
-       
             </div>
             
-  <div class='parent'>
+  <div class='parent' *ngIf="view==='gridView'">
     <div class="child" *ngFor="let book of books_data.content">
-        <app-book-tile  [book]="book"></app-book-tile>
+        <app-book-grid [book]="book"></app-book-grid>
+
     </div>
+  </div>
+  <div class='parent' *ngIf="view=='tileView'">
+    <app-book-tile [books]="books_data.content" ></app-book-tile>
   </div>
   <div class="parent">
     <div class="child">
