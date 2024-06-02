@@ -4,11 +4,12 @@ import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environment';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,LoginComponent],
+  imports: [RouterOutlet,LoginComponent, AppHeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

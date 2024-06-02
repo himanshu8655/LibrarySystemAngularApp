@@ -1,59 +1,95 @@
-/* Container for the tiles */
-.book-tiles-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Individual tile */
 .book-tile {
-  display: flex;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  perspective: 1000px;
+  width: 240px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  text-align: center;
+  height: 380px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  margin: 10px; /* Add margin to create space between tiles */
 }
-
-.book-tile-content {
-  display: flex;
-  flex-direction: row;
+.child {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+.flip-container {
+  position: relative;
   width: 100%;
+  height: 100%;
 }
 
-/* Book cover */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-container.hovered .flipper {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
 .book-cover {
-  width: 150px;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
-/* Book details */
+.front-details {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+}
+
 .book-details {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
-.book-details h2 {
-  margin: 0;
+.book-info {
+  flex-grow: 1;
 }
 
-.book-details p {
-  margin: 5px 0;
+.book-details .btn {
+  align-self: flex;
+  margin-top: 10px;
 }
 
-.btn-primary {
-  padding: 10px 20px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  align-self: flex-start;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
+.author {
+  font-style: italic;
+  border-top: 1px solid #dee2e6;
 }

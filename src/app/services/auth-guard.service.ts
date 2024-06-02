@@ -16,10 +16,8 @@ export class AuthGuardService {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isLoggedIn()) {
-      console.log("logged",this.authService.isLoggedIn())
       return true;
     } else {
-      console.log("logged out",this.authService.isLoggedIn())
 
       this.router.navigate([environment.LOGIN_PG]);
       return false;
