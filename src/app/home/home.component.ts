@@ -9,30 +9,30 @@ import { BookPaginationDTO } from '../models/book-pagination-dto';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ThemePalette} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { BookGridComponent } from '../book-grid/book-grid.component';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BookTileComponent, BookGridComponent,HttpClientModule,CommonModule,RouterOutlet, MatPaginatorModule, MatFormFieldModule, MatSelectModule, MatSlideToggleModule,MatIconModule, MatRadioModule, FormsModule],
+  imports: [BookTileComponent, BookGridComponent,HttpClientModule,CommonModule,RouterOutlet, MatPaginatorModule, MatFormFieldModule, MatSelectModule, MatTableModule,MatSlideToggleModule,MatIconModule, MatRadioModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
 onFilterChange($event: any) {
   this.getBooks()
-
 }
 currentPageIndex:number = 0
 pageSize:number = 5
 sortDirection:string = 'asc'
 filter_by = 'bookId';
 view = 'gridView'
+
 onPageChange($event: PageEvent) {
   this.currentPageIndex=$event.pageIndex
   this.pageSize = $event.pageSize
